@@ -7,11 +7,10 @@ namespace KontoTest
     class Bank
     {
         //skapar en blank reference av bankmanager 
-        public Bank bankManager { get; set; }
-        protected string Name { get; set; }
-        protected string Password { get; set; }
-        protected bool IsAdmin { get; set; }
-        protected int UserIndex { get; set; }
+        //protected string Name { get; set; }
+        //protected string Password { get; set; }
+        //protected bool IsAdmin { get; set; }
+        protected int LoggedInUserIndex { get; set; }
 
         private Dictionary<int, Bank> UserDictionary = new Dictionary<int, Bank>();
         private Dictionary<int, BankAccount> AccountDictoinary = new Dictionary<int, BankAccount>();
