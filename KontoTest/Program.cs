@@ -14,8 +14,9 @@ namespace KontoTest
         {
             //Skapar ett object av BankManager och detta objektet
             //sköter all information om alla användare helatiden under programmets gång
-            BankManager accountManager = new BankManager();
-            accountManager.EnlistManager(accountManager);
+            Bank accountManager = new Bank();
+            accountManager.CreateAdmin();
+            accountManager.ProgramStart();
         }
     }
 }

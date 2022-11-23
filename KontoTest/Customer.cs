@@ -4,9 +4,9 @@ using System.Text;
 
 namespace KontoTest
 {
-    class User : BankManager
+    class Customer : Person
     {
-        public User(string name, string password)
+        public Customer(string name, string password)
         {
             Name = name;
             Password = password;

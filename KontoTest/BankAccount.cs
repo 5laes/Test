@@ -7,27 +7,24 @@ namespace KontoTest
 {
     class BankAccount
     {
-        string Name;
-        decimal Money;
 
-        private List<BankAccount> AccountList = new List<BankAccount>();
+        private List<AccountDetails> BankAccountList = new List<AccountDetails>();
 
         public void AddBankAccount()
         {
             Console.Clear();
-            BankAccount newAccount = new BankAccount();
             Console.Write("\n\tName you account: ");
-            newAccount.Name = Console.ReadLine();
+            string name = Console.ReadLine();
             Console.Write("\n\tMonney to deposit: ");
             decimal.TryParse(Console.ReadLine(), out decimal money);
-            newAccount.Money = money;
-            AccountList.Add(newAccount);
+            AccountDetails newAccount = new AccountDetails(name, money);
+            BankAccountList.Add(newAccount);
         }
 
         public void DisplayBankAccounts()
         {
             Console.Clear();
-            foreach (BankAccount item in AccountList)
+            foreach (AccountDetails item in BankAccountList)
             {
                 Console.Write($"\n\t{item.Name}: {item.Money}kr");
             }

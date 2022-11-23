@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KontoTest
 {
-    class Admin : BankManager
+    class Admin : Person
     {
         public Admin()
         {
