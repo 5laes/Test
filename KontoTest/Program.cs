@@ -17,6 +17,7 @@ namespace KontoTest
             AccountList.Add(acc);
             AccountList.Add(salary);
             AccountList.Add(pension);
+            Console.WriteLine("ttt");
     }
 
         public static void LoadProgram()
