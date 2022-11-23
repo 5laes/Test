@@ -4,13 +4,13 @@ using System.Text;
 
 namespace KontoTest
 {
-    class User : BankManager
+    class Person : Bank
     {
-        public User(string name, string password)
+        public Person(string name, string password)
         {
             Name = name;
             Password = password;
-            isAdmin = false;
+            IsAdmin = false;
         }
     }
 }

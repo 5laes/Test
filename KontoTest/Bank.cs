@@ -4,16 +4,16 @@ using System.Text;
 
 namespace KontoTest
 {
-    class BankManager
+    class Bank
     {
         //skapar en blank reference av bankmanager 
-        BankManager bankManager;
-        protected string Name;
-        protected string Password;
-        protected bool isAdmin;
-        int inloggedUserIndex;
+        public Bank bankManager { get; set; }
+        protected string Name { get; set; }
+        protected string Password { get; set; }
+        protected bool IsAdmin { get; set; }
+        protected int UserIndex { get; set; }
 
-        private Dictionary<int, BankManager> UserDictionary = new Dictionary<int, BankManager>();
+        private Dictionary<int, Bank> UserDictionary = new Dictionary<int, Bank>();
         private Dictionary<int, BankAccount> AccountDictoinary = new Dictionary<int, BankAccount>();
 
         //startmeny för att logga in / skapa konto
@@ -42,7 +42,7 @@ namespace KontoTest
             }
         }
 
-        public void EnlistManager(BankManager manager)
+        public void EnlistManager(Bank manager) //Frågetecken namn
         {
             //skapar en admin
             Admin admin = new Admin();
@@ -61,13 +61,18 @@ namespace KontoTest
             Console.Clear();
             Console.Write("\n\tName: ");
             string name = Console.ReadLine();
+
+
             Console.Write("\n\tPassword: ");
             string password = Console.ReadLine();
+
             if (bankManager.DoesUserExist(name, password) == false)
             {
                 bankManager.ProgramStart();
             }
         }
+
+        //Methods
 
         //skapar en användare av "User" och lägger in det i dictionary
         public void CreateUser()
@@ -75,14 +80,16 @@ namespace KontoTest
             Console.Clear();
             Console.Write("\n\tName: ");
             string name = Console.ReadLine();
+
             Console.Write("\n\tPassword: ");
             string password = Console.ReadLine();
-            User newUser = new User(name, password);
+
+            Person newUser = new Person(name, password);
             bankManager.CreatUserAccount(newUser);
             bankManager.ProgramStart();
         }
 
-        public void CreatUserAccount(BankManager newUser)
+        public void CreatUserAccount(Bank newUser)
         {
             UserDictionary.Add(UserDictionary.Count, newUser);
             BankAccount newAccount = new BankAccount();
@@ -121,7 +128,7 @@ namespace KontoTest
             //kollar så att rätt användare får nytt konto
             foreach (KeyValuePair<int, BankAccount> item in AccountDictoinary)
             {
-                if (item.Key == inloggedUserIndex)
+                if (item.Key == UserIndex)
                 {
                     item.Value.AddBankAccount();
                 }
@@ -135,7 +142,7 @@ namespace KontoTest
             //kollar så att rätt användares konton visas
             foreach (KeyValuePair<int, BankAccount> item in AccountDictoinary)
             {
-                if (item.Key == inloggedUserIndex)
+                if (item.Key == UserIndex)
                 {
                     item.Value.DisplayBankAccounts();
                 }
@@ -147,11 +154,11 @@ namespace KontoTest
         //loop som kollar om namn&lösen stämmer
         public bool DoesUserExist(string name, string password)
         {
-            foreach (KeyValuePair<int, BankManager> item in UserDictionary)
+            foreach (KeyValuePair<int, Bank> item in UserDictionary)
             {
                 if (item.Value.Name == name && item.Value.Password == password)
                 {
-                    inloggedUserIndex = item.Key;
+                    UserIndex = item.Key;
                     bankManager.AccountMenu();
                     return true;
                 }
