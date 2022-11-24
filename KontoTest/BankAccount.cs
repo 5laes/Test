@@ -26,7 +26,7 @@ namespace KontoTest
             Console.Clear();
             foreach (AccountDetails item in BankAccountList)
             {
-                Console.Write($"\n\t{item.Name}: {item.Money}kr");
+                Console.Write($"\n\t{item.AccountName}: {item.Money}kr");
             }
         }
     }

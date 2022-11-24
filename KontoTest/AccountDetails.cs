@@ -6,11 +6,11 @@ namespace KontoTest
 {
     class AccountDetails
     {
-        public string Name;
+        public string AccountName;
         public decimal Money;
         public AccountDetails(string name, decimal money)
         {
-            Name = name;
+            AccountName = name;
             Money = money;
         }
     }
